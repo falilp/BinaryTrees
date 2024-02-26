@@ -1,7 +1,7 @@
 # Binary Trees
 A tree is a collection of elements of a given type, each of which is stored in a node. There is a paternity relationship between the nodes that determines a hierarchical structure over them.
 
-![image](https://github.com/falilp/ArbolesBinarios/assets/78731447/1f01f9f0-4212-4985-8542-8afa1b30a05f)
+![image](https://github.com/falilp/BinaryTrees/assets/78731447/f6ce0c99-9a2c-4f9c-9956-432eda753014)
 
 Some necessary definitions about trees:
 
