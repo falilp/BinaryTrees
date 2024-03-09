@@ -19,15 +19,15 @@ unsigned int calculateTotalNodes(const Abin<tValue> &abin){
 #pragma region Exercise2
 // exercise 2: Implement an applet that calculates the height of a binary tree
 template <typename tValue>
-unsigned int calculateHeightNode(const Abin<tValue> &abin){
-    if(abin.arbolVacio()) return 0;
-    else return calculateHeight(abin,abin.raiz())-1;
-}
-
-template <typename tValue>
 unsigned int calculateHeight(const Abin<tValue> &abin, const typename Abin<tValue>::nodo node){
     if(node == abin.NODO_NULO) return 0;
     else return 1 + std::max(calculateHeight(node,abin.hijoIzqdo(node)),calculateHeight(node,abin.hijoDrcho(node)));
+}
+
+template <typename tValue>
+unsigned int calculateHeightNode(const Abin<tValue> &abin){
+    if(abin.arbolVacio()) return 0;
+    else return calculateHeight(abin,abin.raiz())-1;
 }
 #pragma endregion
 

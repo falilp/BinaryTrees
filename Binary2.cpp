@@ -8,7 +8,7 @@ template <typename tValue>
 bool similars(const Abin<tValue> &abin1, const Abin<tValue> &abin2, const typename Abin<tValue>::nodo node1, const typename Abin<tValue>::nodo node2){
     if(node1 == abin1.NODO_NULO && node2 == abin2.NODO_NULO) return true;
     else if(node1 != abin1.NODO_NULO && node2 != abin2.NODO_NULO) return true 
-                                                                            && similars(abin1,abin2,abin1.hijoIzqdo(node1),abin2.hijoDrcho(node2))
+                                                                            && similars(abin1,abin2,abin1.hijoIzqdo(node1),abin2.hijoIzqdo(node2))
                                                                             && similars(abin1,abin2,abin1.hijoDrcho(node1),abin2.hijoDrcho(node2));
     else return false;
 }
@@ -63,11 +63,11 @@ typedef struct elemento{
 double expression(const Abin<Elemento> &abin,const typename Abin<Elemento>::nodo node){
     if(node != abin.NODO_NULO){
         switch (abin.elemento(node).operador){
-            case '+': return expression(abin,abin.hijoIzqdo(node))+expression(abin,abin.hijoDrcho(node)); break;
-            case '-': return expression(abin,abin.hijoIzqdo(node))-expression(abin,abin.hijoDrcho(node)); break;
-            case '*': return expression(abin,abin.hijoIzqdo(node))*expression(abin,abin.hijoDrcho(node)); break;
-            case '/': return expression(abin,abin.hijoIzqdo(node))/expression(abin,abin.hijoDrcho(node)); break;
-            default: return abin.elemento(node).operando; break;
+            case '+': return expression(abin,abin.hijoIzqdo(node))+expression(abin,abin.hijoDrcho(node));
+            case '-': return expression(abin,abin.hijoIzqdo(node))-expression(abin,abin.hijoDrcho(node));
+            case '*': return expression(abin,abin.hijoIzqdo(node))*expression(abin,abin.hijoDrcho(node));
+            case '/': return expression(abin,abin.hijoIzqdo(node))/expression(abin,abin.hijoDrcho(node));
+            default: return abin.elemento(node).operando;
         }
     }else return abin.elemento(node).operando;
 }
@@ -141,6 +141,3 @@ unsigned int threeGrandchildren(const Abin<tValue>& abin){
     else return countThreeGrandchildren(abin,abin.raiz());
 }
 #pragma endregion
-/*
-Code by Falilp
-*/
