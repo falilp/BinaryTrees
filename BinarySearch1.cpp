@@ -84,7 +84,7 @@ implements the intersection operation of two sets, which returns as a result
 another set that is the intersection of both. The result must be in a tree
 balanced.*/
 template <typename tValue>
-Abb<tValue> unionOfBinary(const Abb<tValue> &abb1, const Abb<tValue> &abb2){
+Abb<tValue> intersectionOfBinary(const Abb<tValue> &abb1, const Abb<tValue> &abb2){
     if(!abb1.vacio() && !abb2.vacio()){
         std::vector<tValue> elements1, elements2, binaryIntersection;
         std::set<tValue> repeatElements;
@@ -108,5 +108,24 @@ The implementation of the ◆ operator must be carried out using the
 operation ∈, which tells us whether or not a given element belongs to a set. The
 representation of type Set must be such that the membership operation is in the
 average case in O(log n).*/
+template <typename tValue>
+Abb<tValue> diamondOperator(const Abb<tValue> &abb1, const Abb<tValue> &abb2){
+    Abb<tValue> auxiliarAbb1, auxiliarAbb2, diamond;
+    auxiliarAbb1 = unionOfBinary(abb1,abb2);
+    auxiliarAbb2 = intersectionOfBinary(abb1,abb2);
 
+    std::vector<tValue> elements1, elements2;
+    inorden(auxiliarAbb1,elements1);
+    inorden(auxiliarAbb2,elements2);
+    
+    auto iterator=elements1.begin();
+    while(iterator != elements1.end()){
+        if(std::find(elements2.begin(), elements2.end(), *iterator) != elements2.end()) iterator = elements1.erase(iterator);
+        else ++iterator;
+    }
+
+    std::sort(diamondVector.begin(),diamondVector.end());
+    //diamondVector.erase(std::unique(diamondVector.begin(),diamondVector.end()), diamondVector.end());
+    return buildBalancedTree(diamondVector, 0, diamondVector.size()-1); 
+}
 #pragma endregion
