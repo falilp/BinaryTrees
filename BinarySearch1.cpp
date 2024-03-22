@@ -4,12 +4,13 @@
 #include <set>
 #include "abb.hpp"
 
-#pragma region Exercise1
 /* exercise 1: Implements a new operation of the TAD abb that, taking an element of it, completely
-   eliminates the subtree that hangs from it */
+   eliminates the subtree that hangs from it 
 
-// The solution is on the TAD abb.hpp
-// if we want a functions them:
+The solution is on the TAD abb.hpp
+if we want a functions them: */
+#pragma region Exercise1
+
 template <typename tValue>
 void eliminateSubTree(Abb<tValue> &abb, const tValue &element){
     if(!abb.vacio()){
@@ -28,14 +29,16 @@ void eliminateSub(typename Abb<tValue>::arbol* &abb){
         abb = nullptr;
     }
 }
+
 #pragma endregion
 
-#pragma region Exercise2
 /* exercise 2: A binary search tree can be balanced by traversing inorder
 of the tree to obtain the ordered list of its elements and then distribute
 equally the elements on the left and right, placing the median at the root and
 recursively building the left and right subtrees of each node.
 Implement this algorithm to balance an ABB.*/
+#pragma region Exercise2
+
 template <typename tValue>
 Abb<tValue> buildBalancedTree(const std::vector<tValue> &elements, int begin, int end){
     if(begin > end) return Abb<tValue>();
@@ -47,12 +50,14 @@ Abb<tValue> buildBalancedTree(const std::vector<tValue> &elements, int begin, in
 
     return abb;
 }
+
 #pragma endregion
 
-#pragma region Exercise3
 /* exercise 3: Given two sets represented by binary search trees,
 implements the union operation of two sets that returns another result
 set that is the union of both, represented by a balanced ABB.*/
+#pragma region Exercise3
+
 template <typename tValue>
 void inorden(const Abb<tValue> &abb, std::vector<tValue> &elements){
     if(!abb.vacio()){
@@ -76,13 +81,15 @@ Abb<tValue> unionOfBinary(const Abb<tValue> &abb1, const Abb<tValue> &abb2){
         return buildBalancedTree(binaryUnion, 0, binaryUnion.size()-1);
     }
 }
+
 #pragma endregion
 
-#pragma region Exercise4
 /* exercise 4: Given two sets represented by binary search trees,
 implements the intersection operation of two sets, which returns as a result
 another set that is the intersection of both. The result must be in a tree
 balanced.*/
+#pragma region Exercise4
+
 template <typename tValue>
 Abb<tValue> intersectionOfBinary(const Abb<tValue> &abb1, const Abb<tValue> &abb2){
     if(!abb1.vacio() && !abb2.vacio()){
@@ -100,14 +107,16 @@ Abb<tValue> intersectionOfBinary(const Abb<tValue> &abb1, const Abb<tValue> &abb
         return buildBalancedTree(binaryIntersection, 0, binaryIntersection.size()-1); 
     }
 }
+
 #pragma endregion
 
-#pragma region Exercise5
 /* exercise 5: Implements the ◆ operator for sets defined as A ◆ B = (A ∪ B) - (A ∩ B).
 The implementation of the ◆ operator must be carried out using the
 operation ∈, which tells us whether or not a given element belongs to a set. The
 representation of type Set must be such that the membership operation is in the
 average case in O(log n).*/
+#pragma region Exercise5
+
 template <typename tValue>
 Abb<tValue> diamondOperator(const Abb<tValue> &abb1, const Abb<tValue> &abb2){
     Abb<tValue> auxiliarAbb1, auxiliarAbb2, diamond;
@@ -128,4 +137,5 @@ Abb<tValue> diamondOperator(const Abb<tValue> &abb1, const Abb<tValue> &abb2){
     //diamondVector.erase(std::unique(diamondVector.begin(),diamondVector.end()), diamondVector.end());
     return buildBalancedTree(diamondVector, 0, diamondVector.size()-1); 
 }
+
 #pragma endregion
