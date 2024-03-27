@@ -114,6 +114,36 @@ unsigned int moreThanFourDescendants(const Abin<tValue> &abin){
 /* Exercise 5: Construct a function that, given a Binary Tree, returns true if it is an AVL and false otherwise. */
 #pragma region Exercise5
 
+template <typename tValue>
+bool checkOrden(const Abin<tValue> &abin, const typename Abin<tValue>::nodo node){
+    return (abin.elemento(abin.hijoIzqdo(node)) < abin.elemento(node) && abin.elemento(node) < abin.elemento(abin.hijoDrcho(node)));
+}
+
+template <typename tValue>
+unsigned int heightAbin(const Abin<tValue> &abin, const typename Abin<tValue>::nodo node){
+    if(node == abin.NODO_NULO) return 0;
+    else return 1 + std::max(heightAbin(abin,abin.hijoIzqdo(node)),heightAbin(abin,abin.hijoDrcho(node)));
+}
+
+template <typename tValue>
+bool balanceFactor(const Abin<tValue> &abin, const typename Abin<tValue>::nodo node){
+    int balance = (heightAbin(abin,abin.hijoDrcho(node))-1) - (heightAbin(abin,abin.hijoIzqdo(node))-1);
+    return (-1 >= balance && balance <= 1);
+}
+
+template <typename tValue>
+bool checkAVL(const Abin<tValue> &abin, const typename Abin<tValue>::nodo node){
+    if(node == abin.NODO_NULO) return true;
+    else if(checkOrden(abin,node) && ) return true && checkAVL(abin,abin.hijoIzqdo(node)) && checkAVL(abin,abin.hijoDrcho(node));
+    else return false;
+}
+
+template <typename tValue>
+bool binaryIsAVL(const Abin<tValue> &abin){
+    if(abin.arbolVacio()) return true;
+    else return checkAVL(abin,abin.raiz());
+}
+
 #pragma endregion
 
 /* Exercise 6: Implements a generic function that transforms a binary tree of a generic type tValue, eliminating the proper 
