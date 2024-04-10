@@ -28,7 +28,7 @@ Implement an applet that returns the binary tree reflected from a given one. */
 #pragma region Exercise2
 
 template <typename tValue>
-void mirrored(const Abin<tValue> &abin, const Abin<tValue> &mirror, const typename Abin<tValue>::nodo nodeAbin, const typename Abin<tValue>::nodo nodeMirror){
+void mirrored(const Abin<tValue> &abin, Abin<tValue> &mirror, const typename Abin<tValue>::nodo nodeAbin, typename Abin<tValue>::nodo nodeMirror){
     if(nodeAbin != abin.NODO_NULO){
         mirror.insertarHijoIzqdo(nodeMirror,abin.elemento(abin.hijoDrcho(nodeAbin)));
         mirror.insertarHijoDrcho(nodeMirror,abin.elemento(abin.hijoIzqdo(nodeAbin)));
