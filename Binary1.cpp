@@ -18,6 +18,7 @@ unsigned int calculateTotalNodes(const Abin<tValue> &abin){
 
 #pragma endregion
 
+
 /* Exercise 2: Implement an applet that calculates the height of a binary tree. */
 #pragma region Exercise2
 
@@ -35,6 +36,7 @@ unsigned int calculateHeightNode(const Abin<tValue> &abin){
 
 #pragma endregion
 
+
 /* exercise 3: Implements an applet that, given a binary tree and a node in it, determines the depth of this node in said tree. */
 #pragma region Exercise3
 
@@ -45,6 +47,7 @@ unsigned int depthNode(const Abin<tValue> &abin, const typename Abin<tValue>::no
 }
 
 #pragma endregion
+
 
 /* Exercise 4: Implements a subprogram that determines the imbalance level of a binary tree, defined as the maximum imbalance of all its nodes. 
 The imbalance of a node is defines as the difference between the heights of the subtrees of the same. */
@@ -64,6 +67,7 @@ unsigned int imbalanceBinaryTree(const Abin<tValue> &abin){
 }
 
 #pragma endregion
+
 
 /* Exercise 5: Implements an applet that determines whether or not a binary tree is pseudocomplete. 
 In this problem we will understand that a tree is pseudocomplete, if at the penultimate level

@@ -28,6 +28,7 @@ unsigned int numberOfReflecteds(const Abin<tValue> &abin){
 
 #pragma endregion
 
+
 /* Exercise 2: Count the number of nodes in a binary tree that has twice as many grandchildren as great-grandchildren. */
 #pragma region Exercise2
 
@@ -64,6 +65,7 @@ unsigned int numberOfTwiceGrandchildren(const Abin<tValue> &abin){
 
 #pragma endregion
 
+
 /* Exercise 3: Know if an Abin is an ABB*/
 #pragma region Exercise3
 
@@ -86,6 +88,7 @@ bool abinIsABB(const Abin<tValue> &abin){
 }
 
 #pragma endregion
+
 
 /* Exercise 4: Implements an applet that, given a binary tree, counts the number of nodes that have more than 4 descendants. */
 #pragma region Exercise4
@@ -111,12 +114,25 @@ unsigned int moreThanFourDescendants(const Abin<tValue> &abin){
 
 #pragma endregion
 
+
 /* Exercise 5: Construct a function that, given a Binary Tree, returns true if it is an AVL and false otherwise. */
 #pragma region Exercise5
 
 template <typename tValue>
+unsigned int noRepeatElement(const Abin<tValue> &abin, const typename Abin<tValue>::nodo node, tValue elemento){
+    if(node == abin.NODO_NULO) return 0;
+    else if(abin.elemento(node) == elemento) return 1 + noRepeatElement(abin,abin.hijoIzqdo(node),elemento) + 
+        noRepeatElement(abin,abin.hijoDrcho(node),elemento);
+    else return noRepeatElement(abin,abin.hijoIzqdo(node),elemento) + 
+        noRepeatElement(abin,abin.hijoDrcho(node),elemento);
+}
+
+template <typename tValue>
 bool checkOrden(const Abin<tValue> &abin, const typename Abin<tValue>::nodo node){
-    return (abin.elemento(abin.hijoIzqdo(node)) < abin.elemento(node) && abin.elemento(node) < abin.elemento(abin.hijoDrcho(node)));
+    bool value = true;
+    if(abin.hijoIzqdo(node) != abin.NODO_NULO) value &= abin.elemento(abin.hijoIzqdo(node)) < abin.elemento(node);
+    if(abin.hijoDrcho(node) != abin.NODO_NULO) valor &= abin.elemento(node) < abin.elemento(abin.hijoDrcho(node));
+    return value;
 }
 
 template <typename tValue>
@@ -134,7 +150,9 @@ bool balanceFactor(const Abin<tValue> &abin, const typename Abin<tValue>::nodo n
 template <typename tValue>
 bool checkAVL(const Abin<tValue> &abin, const typename Abin<tValue>::nodo node){
     if(node == abin.NODO_NULO) return true;
-    else if(checkOrden(abin,node) && ) return true && checkAVL(abin,abin.hijoIzqdo(node)) && checkAVL(abin,abin.hijoDrcho(node));
+    else if(checkOrden(abin,node) && noRepeatElement(abin,node,abin.elemento(node) && balanceFactor(abin,node))) return true && 
+        checkAVL(abin,abin.hijoIzqdo(node)) && 
+        checkAVL(abin,abin.hijoDrcho(node));
     else return false;
 }
 
@@ -145,6 +163,7 @@ bool binaryIsAVL(const Abin<tValue> &abin){
 }
 
 #pragma endregion
+
 
 /* Exercise 6: Implements a generic function that transforms a binary tree of a generic type tValue, eliminating the proper 
 descendants of all those nodes whose content be, at the same time greater than or equal to his own ancestors and 

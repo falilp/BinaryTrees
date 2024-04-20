@@ -23,6 +23,7 @@ bool similarTrees(const Abin<tValue> &abin1, const Abin<tValue> &abin2){
 
 #pragma endregion
 
+
 /* exercise 2: For a binary tree B, we can construct the mirrored binary tree BR by changing the left and right subtrees at each node. 
 Implement an applet that returns the binary tree reflected from a given one. */
 #pragma region Exercise2
@@ -48,6 +49,7 @@ Abin<tValue> mirroedTree(const Abin<tValue> &abin){
 }
 
 #pragma endregion
+
 
 /* Exercise 3: The TAD binary tree can accommodate mathematical expressions using an expression tree. Within the binary tree the leaf nodes will contain the operands, and the rest
 of the nodes the operators.
@@ -83,6 +85,7 @@ double expressionTree(const Abin<Elemento> &abin){
 
 #pragma endregion
 
+
 /* Exercise 4: RENEGADES: A node is said to be renegade when it goes against the others. Given a Binary Tree, calculate the number of renegade nodes in said tree.
 Note: I consider that renegade is from the root. */
 #pragma region Exercise4
@@ -102,6 +105,7 @@ unsigned int NodeRenegades(const Abin<tValue>& abin){
 
 #pragma endregion
 
+
 /* Exercise 5: Find a node in the tree.
 NOTE: i will assume that the exercise refers to finding the, that is, does it exist in the tree. */
 #pragma region Exercise5
@@ -120,6 +124,7 @@ bool findNode(const Abin<tValue>& abin, const typename Abin<tValue>::nodo node){
 }
 
 #pragma endregion
+
 
 /* Exercise 6: Count the number of nodes in a binary tree that has exactly 3 grandchildren. */
 #pragma region Exercise6

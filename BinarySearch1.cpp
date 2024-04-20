@@ -12,21 +12,18 @@ if we want a functions them: */
 #pragma region Exercise1
 
 template <typename tValue>
-void eliminateSubTree(Abb<tValue> &abb, const tValue &element){
-    if(!abb.vacio()){
-        const Abb<tValue> &auxiliarAbb = abb.buscar(element);
-        if(!auxiliarAbb.vacio()) eliminateSub(auxiliarAbb.r);
-    }
+void eliminateNodes(Abb<tValue> &abb, tValue &element){
+    abb.buscar(element).~Abb();
 }
 
 template <typename tValue>
-void eliminateSub(typename Abb<tValue>::arbol* &abb){
-    if(abb != nullptr){
-        eliminateSub(abb->izq.r);
-        eliminateSub(abb->drc.r);
-
-        delete abb;
-        abb = nullptr;
+void eliminateSubarbol(Abb<tValue> &abb, tValue &element){
+    if(!abb.vacio()){
+        if(abb.elemento() < element) eliminateSubarbol(abb.izqdo(),element);
+        else{
+            if(abb.elemento() > element) eliminateSubarbol(abb.drcho(),element);
+            abb.~Abb();
+        }
     }
 }
 
