@@ -72,7 +72,7 @@ Abb<tValue> unionOfBinary(const Abb<tValue> &abb1, const Abb<tValue> &abb2){
         inorden(abb2,elements2);
 
         std::merge(elements1.begin(), elements1.end(), elements2.begin(), elements2.end(), std::back_inserter(binaryUnion));
-        std::sort(binaryUnion.end(),binaryUnion.end());
+        std::sort(binaryUnion.begin(),binaryUnion.end());
         binaryUnion.erase(std::unique(binaryUnion.begin(),binaryUnion.end()), binaryUnion.end());
 
         return buildBalancedTree(binaryUnion, 0, binaryUnion.size()-1);
